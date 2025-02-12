@@ -270,6 +270,14 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+Movie.all.each{
+    |movie| puts movie["name"] + movie["rating"]+ movie["year_released"].to_s
+}
+
+##-- The SQL statement for the movies output
+#SELECT movies.title, movies.year_released, movies.rated, studios.name 
+#FROM movies INNER JOIN studios ON studios.id = movies.studio_id;
+
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
