@@ -77,12 +77,38 @@
 # Use `Model.destroy_all` code.
 # TODO!
 
+#studios, movies, actors, and roles are going to be our "tables" of data
+
+Studio.destroy_all
+Movie.destroy_all
+Actor.destroy_all
+Role.destroy_all
+
 # Generate models and tables, according to the domain model.
-# TODO!
+# TODO! -done!
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+warnerbros = Studio.new
+warnerbros["name"] = "Apple"
+warnerbros["city"] = "Cupertino"
+warnerbros["state"] = "CA"
+warnerbros["url"] = "https://www.apple.com"
+warnerbros.save
+
+
+INSERT INTO studios (name) VALUES ("Warner Bros."); -- 1
+
+INSERT INTO movies (title, year_released, rated, studio_id)
+VALUES ("Batman Begins", 2005, "PG-13", 1);
+
+INSERT INTO movies (title, year_released, rated, studio_id)
+VALUES ("The Dark Knight", 2008, "PG-13", 1);
+
+INSERT INTO movies (title, year_released, rated, studio_id)
+VALUES ("The Dark Knight Rises", 2012, "PG-13", 1);
 
 # Prints a header for the movies output
 puts "Movies"
