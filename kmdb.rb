@@ -91,24 +91,176 @@ Role.destroy_all
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
+#Studio
 warnerbros = Studio.new
-warnerbros["name"] = "Apple"
-warnerbros["city"] = "Cupertino"
-warnerbros["state"] = "CA"
-warnerbros["url"] = "https://www.apple.com"
+warnerbros["name"] = "Warner Bros."
 warnerbros.save
 
+#Movie
+batmanbegins = Movie.new
+batmanbegins["title"] = "Batman Begins"
+batmanbegins["year_released"] = 2005
+batmanbegins["rating"] = "PG-13"
+batmanbegins["studio_id"] = warnerbros["id"]
+batmanbegins.save
 
-INSERT INTO studios (name) VALUES ("Warner Bros."); -- 1
+darkknight = Movie.new
+darkknight["title"] = "The Dark Knight"
+darkknight["year_released"] = 2008
+darkknight["rating"] = "PG-13"
+darkknight["studio_id"] = warnerbros["id"]
+darkknight.save
 
-INSERT INTO movies (title, year_released, rated, studio_id)
-VALUES ("Batman Begins", 2005, "PG-13", 1);
+darkknightrises = Movie.new
+darkknightrises["title"] = "The Dark Knight Rises"
+darkknightrises["year_released"] = 2012
+darkknightrises["rating"] = "PG-13"
+darkknightrises["studio_id"] = warnerbros["id"]
+darkknightrises.save
 
-INSERT INTO movies (title, year_released, rated, studio_id)
-VALUES ("The Dark Knight", 2008, "PG-13", 1);
+#Actor
+christianbale = Actor.new
+christianbale["name"] = "Christian Bale"
+christianbale.save
 
-INSERT INTO movies (title, year_released, rated, studio_id)
-VALUES ("The Dark Knight Rises", 2012, "PG-13", 1);
+michaelcaine = Actor.new
+michaelcaine["name"] = "Michael Caine"
+michaelcaine.save
+
+liamneeson = Actor.new
+liamneeson["name"] = "Liam Neeson"
+liamneeson.save
+
+katieholmes = Actor.new
+katieholmes["name"] = "Katie Holmes"
+katieholmes.save
+
+garyoldman = Actor.new
+garyoldman["name"] = "Gary Oldman"
+garyoldman.save
+
+heathledger = Actor.new
+heathledger["name"] = "Heath Ledger"
+heathledger.save
+
+aaroneckhart = Actor.new
+aaroneckhart["name"] = "Aaron Eckhart"
+aaroneckhart.save
+
+maggiegyllenhaal = Actor.new
+maggiegyllenhaal["name"] = "Maggie Gyllenhaal"
+maggiegyllenhaal.save
+
+tomhardy = Actor.new
+tomhardy["name"] = "Tom Hardy"
+tomhardy.save
+
+josephgordonlevitt = Actor.new
+josephgordonlevitt["name"] = "Joseph Gordon Levitt"
+josephgordonlevitt.save
+
+annehathaway = Actor.new
+annehathaway["name"] = "Anne Hathaway"
+annehathaway.save
+
+#Role
+
+#Batman begins roles
+
+brucewayne = Role.new
+brucewayne["movie_id"] = batmanbegins["id"]
+brucewayne["actor_id"] = christianbale["id"]
+brucewayne["character_name"] = "Bruce Wayne"
+brucewayne.save
+
+alfred = Role.new
+alfred["movie_id"] = batmanbegins["id"]
+alfred["actor_id"] = michaelcaine["id"]
+alfred["character_name"] = "Alfred"
+alfred.save
+
+rasalghul = Role.new
+rasalghul["movie_id"] = batmanbegins["id"]
+rasalghul["actor_id"] = liamneeson["id"]
+rasalghul["character_name"] = "Ra's Al Ghul"
+rasalghul.save
+
+racheldawes = Role.new
+racheldawes["movie_id"] = batmanbegins["id"]
+racheldawes["actor_id"] = katieholmes["id"]
+racheldawes["character_name"] = "Rachel Dawes"
+racheldawes.save
+
+commissionergordon = Role.new
+commissionergordon["movie_id"] = batmanbegins["id"]
+commissionergordon["actor_id"] = garyoldman["id"]
+commissionergordon["character_name"] = "Commissioner Gordon"
+commissionergordon.save
+
+#Dark knight roles
+
+brucewayne = Role.new
+brucewayne["movie_id"] = darkknight["id"]
+brucewayne["actor_id"] = christianbale["id"]
+brucewayne["character_name"] = "Bruce Wayne"
+brucewayne.save
+
+joker = Role.new
+joker["movie_id"] = darkknight["id"]
+joker["actor_id"] = heathledger["id"]
+joker["character_name"] = "Joker"
+joker.save
+
+harveydent = Role.new
+harveydent["movie_id"] = darkknight["id"]
+harveydent["actor_id"] = aaroneckhart["id"]
+harveydent["character_name"] = "Harvey Dent"
+harveydent.save
+
+alfred = Role.new
+alfred["movie_id"] = darkknight["id"]
+alfred["actor_id"] = michaelcaine["id"]
+alfred["character_name"] = "Alfred"
+alfred.save
+
+racheldawes = Role.new
+racheldawes["movie_id"] = darkknight["id"]
+racheldawes["actor_id"] = maggiegyllenhaal["id"]
+racheldawes["character_name"] = "Rachel Dawes"
+racheldawes.save
+
+#Dark knight rises roles
+
+brucewayne = Role.new
+brucewayne["movie_id"] = darkknightrises["id"]
+brucewayne["actor_id"] = christianbale["id"]
+brucewayne["character_name"] = "Bruce Wayne"
+brucewayne.save
+
+commissionergordon = Role.new
+commissionergordon["movie_id"] = darkknightrises["id"]
+commissionergordon["actor_id"] = garyoldman["id"]
+commissionergordon["character_name"] = "Commissioner Gordon"
+commissionergordon.save
+
+bane = Role.new
+bane["movie_id"] = darkknightrises["id"]
+bane["actor_id"] = tomhardy["id"]
+bane["character_name"] = "Bane"
+bane.save
+
+johnblake = Role.new
+johnblake["movie_id"] = darkknightrises["id"]
+johnblake["actor_id"] = josephgordonlevitt["id"]
+johnblake["character_name"] = "John Blake"
+johnblake.save
+
+selinakyle = Role.new
+selinakyle["movie_id"] = darkknightrises["id"]
+selinakyle["actor_id"] = annehathaway["id"]
+selinakyle["character_name"] = "Selina Kyle"
+selinakyle.save
+
 
 # Prints a header for the movies output
 puts "Movies"
