@@ -270,13 +270,25 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
-Movie.all.each{
-    |movie| puts movie["name"] + movie["rating"]+ movie["year_released"].to_s
-}
+#warnerbrothers = Studio.find_by({"name" => "Warner Bros."})
 
-##-- The SQL statement for the movies output
-#SELECT movies.title, movies.year_released, movies.rated, studios.name 
-#FROM movies INNER JOIN studios ON studios.id = movies.studio_id;
+movielist = Movie.where({"studio_id" => warnerbros["id"]}) 
+
+for movies in movielist
+  studio = Studio.find_by({"id" => movies["studio_id"]})
+  puts "#{movies["title"].ljust(25)} #{movies["year_released"]} #{movies["rating"]} #{studio["name"]}"
+end
+#note: looked up this --put .ljust(25) after movie.title to get cleaner output
+
+
+#Alternative method
+#movies = Movie.all
+
+#movies.each do |movie|
+  #studio = Studio.find(movie.studio_id)  # Fetch the associated studio
+  #puts "#{movie.title} #{movie.year_released} #{movie.rating}  #{studio.name}" #gtg
+#end
+
 
 # Prints a header for the cast output
 puts ""
@@ -286,3 +298,17 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+rolelist = Role.all  # Get all roles
+
+for role in rolelist
+  movie = Movie.find_by({"id" => role["movie_id"]})  # Get the associated movie
+  actor = Actor.find_by({"id" => role["actor_id"]})  # Get the associated actor
+  puts "#{movie["title"].ljust(25)} #{actor["name"].ljust(25)} #{role["character_name"]}"
+end
+
+#-- The SQL statement for the cast output
+#SELECT movies.title, actors.name, roles.character_name 
+#FROM roles 
+#INNER JOIN movies on movies.id = roles.movie_id 
+#INNER JOIN actors ON actors.id = roles.actor_id;
